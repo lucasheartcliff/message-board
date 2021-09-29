@@ -1,0 +1,26 @@
+#!/bin/bash
+USERNAME=poo
+DB_NAME=poodb
+
+mysql -u root -v $@  <<EOF
+-- live development sql script
+
+-- delete database
+DROP DATABASE IF EXISTS $DB_NAME;
+
+-- create database
+CREATE DATABASE IF NOT EXISTS $DB_NAME DEFAULT CHARACTER SET utf8 DEFAULT COLLATE utf8_general_ci;
+
+-- create USER
+DROP USER IF EXISTS '$USERNAME'@'localhost';
+CREATE USER '$USERNAME'@'localhost' IDENTIFIED BY '';
+GRANT USAGE ON *.* TO '$USERNAME'@'localhost';
+GRANT ALL ON $DB_NAME.* TO '$USERNAME'@'localhost' WITH GRANT OPTION;
+
+DROP USER IF EXISTS '$USERNAME'@'%';
+CREATE USER '$USERNAME'@'%' IDENTIFIED BY '';
+GRANT USAGE ON *.* TO '$USERNAME'@'%';
+GRANT ALL ON $DB_NAME.* TO '$USERNAME'@'%' WITH GRANT OPTION;
+
+FLUSH PRIVILEGES;
+EOF
