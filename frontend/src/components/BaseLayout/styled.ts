@@ -17,7 +17,7 @@ export const Header = styled(Layout.Header)`
   z-index: 1;
   display: flex;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: space-between;
   width: 100%;
   transition: all 0.2s ease-in-out;
 

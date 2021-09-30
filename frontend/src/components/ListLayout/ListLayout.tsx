@@ -67,11 +67,10 @@ const ListLayout: ListLayoutType = ({
     }
 
     if (filterValue) {
-      setFilteredData(
-        filteredValues.filter((row, index) =>
-          onClickBasicFilterButton(filterValue, row, index)
-        )
+      filteredValues = filteredValues.filter((row, index) =>
+        onClickBasicFilterButton(filterValue, row, index)
       );
+      setFilteredData(filteredValues);
     }
 
     setFilteredData(filteredValues);

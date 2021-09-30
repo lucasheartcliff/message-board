@@ -1,17 +1,14 @@
 import React, { FC, ReactElement, useState } from 'react';
-import ScrollBar from 'react-custom-scrollbars';
 import {
   CaretDownOutlined,
-  MenuOutlined,
   UserOutlined,
 } from '@ant-design/icons';
-import { Layout, Menu } from 'antd';
+import { Button, Layout, Menu } from 'antd';
 import { Container, Content, Header, UserContainer } from './styled';
 import { paths } from '../../routes';
 import { useHistory, useLocation } from 'react-router-dom';
 import { useContext } from 'react';
 import { AuthContext } from '../../context/AuthContext';
-import { MenuItemProps } from 'antd/lib/menu/MenuItem';
 
 const { SubMenu } = Menu;
 const { Sider } = Layout;
@@ -40,7 +37,10 @@ const BaseLayout: FC<Props> = ({ children }) => {
 
   return (
     <Container>
-      <Header className={collapsed ? 'collapsed' : ''}>
+      <Header>
+        <Button type="text" onClick={() => onSelectRoute(paths.home)}>
+          LOGO
+        </Button>
         <Menu theme="light" mode="horizontal">
           <Menu.Item key="users" onClick={() => onSelectRoute(paths.userList)}>
             {'Users'}
@@ -56,7 +56,7 @@ const BaseLayout: FC<Props> = ({ children }) => {
           </SubMenu>
         </Menu>
       </Header>
-      <Content >{children}</Content>
+      <Content>{children}</Content>
     </Container>
   );
 };

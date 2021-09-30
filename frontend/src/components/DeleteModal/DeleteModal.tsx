@@ -1,33 +1,22 @@
 import { Button } from 'antd';
 import Modal from 'antd/lib/modal/Modal';
 import React from 'react';
-import { apiFetch } from '../../utils';
 import { REMOVE_CONFIRMATION } from '../../utils/message';
 import { Container, Message } from './styled';
 
 interface Props<T> {
   entityName: string;
-  entityId: number;
-  urlBuilder: (id?: string | number) => string;
   visible: boolean;
   hideModal: () => void;
-  onRemove: (promise: Promise<any>) => void;
+  onRemove: () => void;
 }
 
 const DeleteModal = <T extends any>({
   visible,
   hideModal,
   onRemove,
-  urlBuilder,
-  entityId,
   entityName,
 }: Props<T>) => {
-  // const [mutation] = useMutation(queryString)
-
-  const onClickToRemove = () => {
-    onRemove(apiFetch(urlBuilder(entityId)).delete());
-  };
-
   return (
     <Modal
       visible={visible}
@@ -35,7 +24,7 @@ const DeleteModal = <T extends any>({
       title={`Remover ${entityName}`}
       onCancel={hideModal}
       footer={[
-        <Button key="filter" type="primary" danger onClick={onClickToRemove}>
+        <Button key="filter" type="primary" danger onClick={onRemove}>
           {'Remover'}
         </Button>,
       ]}

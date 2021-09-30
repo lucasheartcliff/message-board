@@ -64,6 +64,31 @@ const Users: React.FC<Props> = () => {
     setViewDeleteModal(false);
   }, []);
 
+  const onRemove = () => {
+    if (selectedUser && selectedIndex !== undefined) {
+      setLoading(true);
+      apiFetch(USER(selectedUser?.id))
+        .delete()
+        .then(() =>
+          setData(
+            produce(state => {
+              delete state[selectedIndex];
+            })
+          )
+        )
+        .then(() => {
+          hideDeleteModal();
+          notification.success(REMOVE_ENTITY);
+        })
+        .catch((error: any) => {
+          notification.error(error.message);
+        })
+        .finally(() => {
+          setLoading(false);
+        });
+    }
+  };
+
   return (
     <>
       <ListLayout
@@ -79,27 +104,9 @@ const Users: React.FC<Props> = () => {
       {viewDeleteModal && selectedUser && selectedIndex !== undefined && (
         <DeleteModal
           hideModal={hideDeleteModal}
-          entityId={selectedUser.id}
           visible={viewDeleteModal}
           entityName={ENTITY_NAME}
-          urlBuilder={USER}
-          onRemove={promise => {
-            promise
-              .then(() =>
-                setData(
-                  produce(state => {
-                    delete state[selectedIndex];
-                  })
-                )
-              )
-              .then(() => {
-                hideDeleteModal();
-                notification.success(REMOVE_ENTITY);
-              })
-              .catch((error: any) => {
-                notification.error(error.message);
-              });
-          }}
+          onRemove={onRemove}
         />
       )}
     </>
