@@ -1,4 +1,4 @@
 #!/bin/bash
-
+cd backend
 mvn clean install compile
 mvn spring-boot:run

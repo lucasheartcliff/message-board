@@ -1,0 +1,29 @@
+{
+  "parser": "babel-eslint",
+  "plugins": ["prettier", "import-helpers", "eslint-plugin-import-helpers"],
+  "parserOptions": {
+    "ecmaVersion": 11,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true,
+      "tsx": true
+    }
+  },
+  "env": {
+    "browser": true,
+    "node": true
+  },
+  "ignorePatterns": ["temp.js", "node_modules/"],
+  "rules": {
+    "prettier/prettier": "error",
+    "indent": ["warn", 2],
+    "import-helpers/order-imports": [
+      "warn",
+      {
+        "newlinesBetween": "always",
+        "groups": ["/^react/", "module", ["parent", "sibling", "index"]],
+        "alphabetize": { "order": "asc", "ignoreCase": true }
+      }
+    ]
+  }
+}
