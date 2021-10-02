@@ -13,7 +13,7 @@
 run this script
 
 ```bash
-./scripts/configdb
+./backend/scripts/configdb
 ```
 
 ## Running server
