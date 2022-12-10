@@ -1,4 +1,4 @@
-package com.avaliation.poo.repository;
+package com.avaliation.poo.repository.message;
 
 import com.avaliation.poo.model.Message;
 import org.springframework.data.jpa.repository.JpaRepository;

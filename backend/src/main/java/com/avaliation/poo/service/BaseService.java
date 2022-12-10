@@ -1,16 +1,14 @@
 package com.avaliation.poo.service;
 
-import com.avaliation.poo.utils.ThrowableSupplier;
+import com.avaliation.poo.persistence.TransactionHandler;
+import com.avaliation.poo.repository.RepositoryFactory;
 
-import java.util.function.Function;
-import java.util.function.Supplier;
+public abstract class BaseService {
+    protected final RepositoryFactory repositoryFactory;
+    protected final TransactionHandler transactionHandler;
 
-public class BaseService {
-    protected <T> T encapsulateTransaction(ThrowableSupplier<T> callback) throws Exception{
-        try {
-            return callback.get();
-        } catch (Exception e) {
-            throw e;
-        }
+    protected  BaseService(RepositoryFactory repositoryFactory, TransactionHandler transactionHandler) {
+        this.repositoryFactory = repositoryFactory;
+        this.transactionHandler = transactionHandler;
     }
 }

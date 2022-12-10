@@ -1,4 +1,4 @@
-package com.avaliation.poo.repository;
+package com.avaliation.poo.repository.user;
 
 import com.avaliation.poo.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
