@@ -1,6 +1,6 @@
 #!/bin/bash
-USERNAME=poo
-DB_NAME=poodb
+USERNAME=mb
+DB_NAME=mbdb
 
 mysql -u root -v $@  <<EOF
 -- delete database
