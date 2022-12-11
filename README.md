@@ -1,6 +1,6 @@
 # avaliation-poo
 
-[![wakatime](https://wakatime.com/badge/user/f1d329ab-b4f3-48bd-8ee8-20a2da432d3c/project/933d7e1d-d0f2-438e-9dd6-d24987e09779.svg)](https://wakatime.com/badge/user/f1d329ab-b4f3-48bd-8ee8-20a2da432d3c/project/933d7e1d-d0f2-438e-9dd6-d24987e09779)
+[![wakatime](https://wakatime.com/badge/github/lucasheartcliff/avaliation-poo.svg)](https://wakatime.com/badge/github/lucasheartcliff/avaliation-poo)
 
 ## Requirements
 
