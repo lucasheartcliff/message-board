@@ -1,39 +1,45 @@
 package com.messageboard.controller;
 
+import com.messageboard.RequestHandler;
 import com.messageboard.model.User;
-import com.messageboard.service.ServiceFactory;
 import com.messageboard.viewmodel.UserViewModel;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import jakarta.ws.rs.*;
 
 import java.util.List;
 
-@RestController
-@RequestMapping("/api/users")
+@Path("/api/users")
 public class UsersController extends BaseController {
-
-    @Autowired
-    public UsersController(ServiceFactory serviceFactory) {
-        super(serviceFactory);
+    public UsersController(RequestHandler requestHandler) {
+        super(requestHandler);
     }
 
-    @GetMapping
+    @GET
     public List<User> getUsers() {
-        return serviceFactory.buildUserService().getUsers();
+        return encapsulateRequest((serviceFactory) -> {
+            return serviceFactory.buildUserService().getUsers();
+        });
     }
 
-    @GetMapping("/{id}")
-    public User getUser(@PathVariable(value = "id") Long id) throws Exception {
-        return serviceFactory.buildUserService().getUser(id);
+    @GET
+    @Path("{id}")
+    public User getUser(@PathParam("id") Long id) throws Exception {
+        return encapsulateRequest((serviceFactory) -> {
+            return serviceFactory.buildUserService().getUser(id);
+        });
     }
 
-    @PostMapping
-    public User createUser(@RequestBody UserViewModel model) throws Exception {
-        return serviceFactory.buildUserService().createUser(model);
+    @POST
+    public User createUser(UserViewModel model) throws Exception {
+        return encapsulateRequest((serviceFactory) -> {
+            return serviceFactory.buildUserService().createUser(model);
+        });
     }
 
-    @DeleteMapping("/{id}")
-    public void deleteUser(@PathVariable(value = "id") Long id) throws Exception {
-        serviceFactory.buildUserService().deleteUser(id);
+    @DELETE
+    @Path("{id}")
+    public void deleteUser(@PathParam(value = "id") Long id) throws Exception {
+        encapsulateRequest((serviceFactory) -> {
+            serviceFactory.buildUserService().deleteUser(id);
+        });
     }
 }

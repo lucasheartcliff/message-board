@@ -3,18 +3,15 @@ package com.messageboard.persistence;
 import com.messageboard.utils.ThrowableSupplier;
 import org.hibernate.TransactionException;
 
-import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 
 public class TransactionHandler {
-    private final EntityManager entityManager;
+    private final DatabaseContext databaseContext;
     private EntityTransaction currentTransaction = null;
 
-
-    public TransactionHandler(EntityManager entityManager) {
-        this.entityManager = entityManager;
+    public TransactionHandler(DatabaseContext databaseContext) {
+        this.databaseContext = databaseContext;
     }
-
 
     public <T> T encapsulateTransaction(ThrowableSupplier<T> callback) throws Exception {
         EntityTransaction transaction = getTransaction();
@@ -30,15 +27,16 @@ public class TransactionHandler {
             currentTransaction = null;
         }
     }
-    
-    public void flush(){
-        if (currentTransaction == null || !currentTransaction.isActive()) throw new TransactionException("The transaction should be initiated before \"flush()\" method call");
+
+    public void flush() {
+        if (currentTransaction == null || !currentTransaction.isActive())
+            throw new TransactionException("The transaction should be initiated before \"flush()\" method call");
         currentTransaction.commit();
-        entityManager.flush();
+        databaseContext.getEntityManager().flush();
     }
 
     private EntityTransaction getTransaction() {
-        if (currentTransaction == null) currentTransaction = entityManager.getTransaction();
+        if (currentTransaction == null) currentTransaction = databaseContext.getEntityManager().getTransaction();
         return currentTransaction;
     }
 }

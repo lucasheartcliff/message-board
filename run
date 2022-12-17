@@ -1,3 +1,4 @@
 #!/bin/bash
 cd backend
-mvn spring-boot:run
+mvn clean install
+mvn exec:java

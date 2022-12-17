@@ -1,16 +1,20 @@
 package com.messageboard.controller;
 
-import com.messageboard.service.ServiceFactory;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
+import com.messageboard.RequestHandler;
+import jakarta.ws.rs.GET;
+import jakarta.ws.rs.Path;
+import jakarta.ws.rs.Produces;
+import jakarta.ws.rs.core.MediaType;
 
-@Controller()
-@RequestMapping(value = "/")
-public class HomeController extends BaseController{
-    public HomeController(ServiceFactory serviceFactory) {
-        super(serviceFactory);
+
+@Path("/")
+public class HomeController extends BaseController {
+    public HomeController(RequestHandler requestHandler) {
+        super(requestHandler);
     }
 
+    @GET
+    @Produces(MediaType.TEXT_PLAIN)
     public String index() {
         return "index";
     }

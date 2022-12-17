@@ -27,7 +27,7 @@ public class PersistenceServiceImpl implements PersistenceService {
                                 .put(USER, USERNAME)
                                 .put(PASS, PASSWORD)
                                 .put(DIALECT, MySQL5Dialect.class)
-                                .put(HBM2DDL_AUTO, CREATE)
+                                .put(HBM2DDL_AUTO, "update")
                                 .put(SHOW_SQL, false)
                                 .put(QUERY_STARTUP_CHECKING, false)
                                 .put(GENERATE_STATISTICS, false)

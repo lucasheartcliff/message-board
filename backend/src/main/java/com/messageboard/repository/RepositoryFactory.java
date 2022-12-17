@@ -1,5 +1,6 @@
 package com.messageboard.repository;
 
+import com.messageboard.persistence.DatabaseContext;
 import com.messageboard.repository.message.MessageRepository;
 import com.messageboard.repository.message.MessageRepositoryImpl;
 import com.messageboard.repository.user.UserRepository;
@@ -10,21 +11,18 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 
-@Service
-@Transactional
 public class RepositoryFactory {
-    private final EntityManager entityManager;
+    private final DatabaseContext databaseContext;
 
-    @Autowired
-    public RepositoryFactory(EntityManager entityManager) {
-        this.entityManager = entityManager;
+    public RepositoryFactory(DatabaseContext databaseContext) {
+        this.databaseContext = databaseContext;
     }
 
     public UserRepository buildUserRepository(){
-        return new UserRepositoryImpl(entityManager);
+        return new UserRepositoryImpl(databaseContext.getEntityManager());
     }
 
     public MessageRepository buildMessageRepository(){
-        return new MessageRepositoryImpl(entityManager);
+        return new MessageRepositoryImpl(databaseContext.getEntityManager());
     }
 }

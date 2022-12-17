@@ -1,23 +1,22 @@
 package com.messageboard.controller;
 
+import com.messageboard.RequestHandler;
 import com.messageboard.model.User;
-import com.messageboard.service.ServiceFactory;
 import com.messageboard.viewmodel.UserViewModel;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import jakarta.ws.rs.POST;
+import jakarta.ws.rs.Path;
 
 
-@RestController
-@RequestMapping("/auth/login")
+@Path("/auth/login")
 public class AuthController extends BaseController {
-
-    @Autowired
-    public AuthController(ServiceFactory serviceFactory) {
-        super(serviceFactory);
+    public AuthController(RequestHandler requestHandler) {
+        super(requestHandler);
     }
 
-    @PostMapping
-    public User authUser(@RequestBody UserViewModel model) throws Exception {
-        return serviceFactory.buildUserService().getOrCreateUser(model);
+    @POST
+    public User authUser( UserViewModel model) throws Exception {
+        return encapsulateRequest((serviceFactory) -> {
+            return serviceFactory.buildUserService().getOrCreateUser(model);
+        });
     }
 }

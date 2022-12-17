@@ -4,20 +4,10 @@
 :
 
 .gitignore,a/5/a5cc2925ca8258af241be7e5b0381edf30266302
-3
-run,d/f/df6ad19037c97987c4ff9792810c0e145356717c
-S
-#.idea/sonarlint/issuestore/index.pb,9/f/9fe84ebb15faf917b7def6236dba604453cc61e0
-e
-5backend/src/test/java/com/messageboard/MainTests.java,c/0/c03a849353d477bd954ad23eab3cc80384c02e73
 €
 Pbackend/src/main/java/com/messageboard/repository/message/MessageRepository.java,9/e/9eddbdad1e227bbf20fd155c0ff5af3ae8c5afd4
 z
 Jbackend/src/main/java/com/messageboard/service/message/MessageService.java,5/5/55c7230c2e0ae4824b2cb98ea722a2f8d923927c
-s
-Cbackend/src/main/java/com/messageboard/utils/ThrowableSupplier.java,6/3/637c0e4fb925d1f4579255380143d0d901de9a6e
-z
-Jbackend/src/main/java/com/messageboard/repository/user/UserRepository.java,7/1/71911b74cafea18256cfba5c58e80a6b57b91e02
 t
 Dbackend/src/main/java/com/messageboard/service/user/UserService.java,6/c/6c5c42f6053e88c2a9f8575d2476b2a90e281e53
 f
@@ -36,8 +26,6 @@ Ebackend/src/main/java/com/messageboard/repository/BaseRepository.java,0/8/08be
 Nbackend/src/main/java/com/messageboard/repository/user/UserRepositoryImpl.java,1/9/195cb55443a8e1c8478097d66b49e92dfa824cb5
 „
 Tbackend/src/main/java/com/messageboard/repository/message/MessageRepositoryImpl.java,8/c/8c826570f4cda4e6680c168c673bb5d8dace0a81
-x
-Hbackend/src/main/java/com/messageboard/repository/RepositoryFactory.java,a/b/ab6e9fa7e338e2627acb88f2708d943be2d10dc2
 9
 	README.md,8/e/8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d
 o
@@ -46,3 +34,13 @@ x
 Hbackend/src/main/java/com/messageboard/service/user/UserServiceImpl.java,c/6/c6c19233e385c6055d861fecddf02f22e760e22b
 ~
 Nbackend/src/main/java/com/messageboard/service/message/MessageServiceImpl.java,c/8/c8c8b64c53f035689563ab1573919721413b13e6
+s
+Cbackend/src/main/java/com/messageboard/viewmodel/UserViewModel.java,e/1/e17115119aba5dac6edfd21301bb005cc7169627
+v
+Fbackend/src/main/java/com/messageboard/viewmodel/MessageViewModel.java,0/c/0c2cac3314a8bcbe6f5ba6182948b7e7cb134395
+H
+backend/scripts/configdb,3/a/3acdb2d974cb0eaab764bc132828160c74ea7e9e
+s
+Cbackend/src/main/java/com/messageboard/utils/ThrowableSupplier.java,6/3/637c0e4fb925d1f4579255380143d0d901de9a6e
+
+Obackend/src/main/java/com/messageboard/persistence/PersistenceUnitInfoImpl.java,2/2/222c05d74a9d71973b671b08b5c59e65abefda7f
