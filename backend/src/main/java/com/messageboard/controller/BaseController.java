@@ -5,12 +5,14 @@ import com.messageboard.persistence.DatabaseContext;
 import com.messageboard.service.ServiceFactory;
 import com.messageboard.utils.ThrowableConsumer;
 import com.messageboard.utils.ThrowableFunction;
+import jakarta.annotation.Resource;
 import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.MediaType;
 
 
+@Resource
 @Produces(MediaType.APPLICATION_JSON)
-public abstract class BaseController {
+public abstract class BaseController  {
     private final RequestHandler requestHandler;
 
 

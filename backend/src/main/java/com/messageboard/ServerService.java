@@ -14,7 +14,7 @@ import java.util.Set;
 
 public class ServerService {
     // Base URI the Grizzly HTTP server will listen on
-    public static final String BASE_URI = "http://localhost:8080/";
+    public static final String BASE_URI = "http://localhost:8080";
 
     private final ControllerFactory controllerFactory;
 
@@ -32,13 +32,15 @@ public class ServerService {
         // in com package
         Set<BaseController> controllers = getControllers();
 
+
         ResourceConfig rc = new ResourceConfig().registerInstances(controllers);
-        /*Resource.builder().
-        rc.registerResources()
+        Set<Resource> resources = rc.getResources();
+
         for (BaseController controller : controllers) {
-            rc = rc.register(controller);
+            rc.register(controller);
         }
-*/
+        System.out.println("\n\n\n\n\n\n" + resources.toString() + rc.getConfiguration().getResources().toString() + rc.getClasses() + rc.getApplication().getClasses().toString() + "\n\n\n\n\n");
+
         // create and start a new instance of grizzly http server
         // exposing the Jersey application at BASE_URI
         return GrizzlyHttpServerFactory.createHttpServer(URI.create(BASE_URI), rc);
