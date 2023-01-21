@@ -4,14 +4,15 @@ import com.messageboard.persistence.DatabaseContext;
 import com.messageboard.persistence.DatabaseContextImpl;
 import com.messageboard.repository.RepositoryFactory;
 import com.messageboard.service.ServiceFactory;
+import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityManagerFactory;
 
-import org.springframework.stereotype.Component;
-
-@Component
+@Service
 public class RequestHandler {
+
   private final EntityManagerFactory entityManagerFactory;
+
 
   public RequestHandler(EntityManagerFactory entityManagerFactory) {
     this.entityManagerFactory = entityManagerFactory;

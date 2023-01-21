@@ -1,9 +1,9 @@
 package com.messageboard.repository.user;
 
 import com.messageboard.model.User;
-import org.springframework.data.jpa.repository.JpaRepository;
+import com.messageboard.repository.EntityRepository;
 
-public interface UserRepository extends JpaRepository<User, Long> {
+public interface UserRepository extends EntityRepository<User, Long> {
 
     User findUserByEmail(String email);
 }
