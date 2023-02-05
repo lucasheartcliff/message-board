@@ -1,5 +1,8 @@
 package com.messageboard.persistence;
 
+import org.reflections.Reflections;
+
+import javax.persistence.Entity;
 import javax.persistence.SharedCacheMode;
 import javax.persistence.ValidationMode;
 import javax.persistence.spi.ClassTransformer;
@@ -12,6 +15,8 @@ import java.net.URL;
 import java.util.Collections;
 import java.util.List;
 import java.util.Properties;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 public class PersistenceUnitInfoImpl implements PersistenceUnitInfo {
     @Override
@@ -62,7 +67,7 @@ public class PersistenceUnitInfoImpl implements PersistenceUnitInfo {
 
     @Override
     public List<String> getManagedClassNames() {
-        return Collections.emptyList();
+        return getClasses().stream().map(Class::getSimpleName).collect(Collectors.toList());
     }
 
     @Override
@@ -92,7 +97,7 @@ public class PersistenceUnitInfoImpl implements PersistenceUnitInfo {
 
     @Override
     public ClassLoader getClassLoader() {
-        return null;
+        return ClassLoader.getSystemClassLoader();
     }
 
     @Override
@@ -104,4 +109,11 @@ public class PersistenceUnitInfoImpl implements PersistenceUnitInfo {
     public ClassLoader getNewTempClassLoader() {
         return null;
     }
+
+    private Set<Class<?>> getClasses() {
+        Reflections reflections = new Reflections("com.messageboard.model");
+        return reflections.getTypesAnnotatedWith(Entity.class);
+
+    }
+
 }
